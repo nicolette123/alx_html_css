@@ -1,71 +1,222 @@
-/* === Layout Styling === */
+/* --- Global look --- */
 body {
-  display: flex;
-  flex-direction: column; /* Stack header, main, footer */
-  min-height: 100vh;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background-color: #f4f6f8;
+  color: #333;
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
+  padding: 0;
 }
 
-header, footer {
-  background-color: #333;
+/* Header */
+header {
+  background: linear-gradient(135deg, #222, #444);
   color: white;
-  padding: 1rem;
+  padding: 1.5rem;
   text-align: center;
 }
 
-main {
-  display: flex;
-  flex-direction: row; /* Article and aside side by side */
-  flex: auto;
-  gap: 1rem;
-  padding: 1rem;
-}
-
-article {
-  flex: 2; /* 2/3 width */
-  background: #f5f5f5;
-  padding: 1rem;
-  border-radius: 6px;
-  overflow-y: auto;
-}
-
-aside {
-  flex: 1; /* 1/3 width */
-  background: #e9ecef;
-  padding: 1rem;
-  border-radius: 6px;
-  overflow-y: auto;
-}
-
-/* === Links and Navigation === */
-nav ul {
-  list-style: none;
-  padding: 0;
+header h1 {
   margin: 0;
+  font-size: 2rem;
+  letter-spacing: 1px;
+}
+
+/* Navigation */
+nav ul {
   display: flex;
   justify-content: center;
-  gap: 1rem;
+  gap: 2rem;
+  margin-top: 1rem;
+  padding: 0;
+  list-style: none;
 }
 
 nav ul li a {
   color: #00aced;
   text-decoration: none;
   font-weight: bold;
+  font-size: 1.1rem;
+  transition: color 0.3s;
 }
 
 nav ul li a:hover {
+  color: #1dcaff;
+}
+
+/* Logo */
+nav ul li.logo {
+  font-size: 1.8rem;
+  margin-right: auto; /* pushes links to the right */
+  color: #ffcc00;
+}
+
+/* Main content layout (Flex rules are already there) */
+/* Positioning with Flexbox */
+
+/* Make body a flex container stacked vertically */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* ensures full height of screen */
+}
+
+/* Make main a flex container in a row */
+main {
+  display: flex;
+  flex-direction: row;
+  flex: auto; /* lets main grow/shrink automatically */
+}
+
+/* Article takes 2/3 of width */
+article {
+  flex: 2;
+  overflow-y: auto; /* scrollable if content is long */
+  padding: 20px;
+  background-color: #fff;
+}
+
+/* Aside takes 1/3 of width */
+aside {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-left: 1px solid #ddd;
+}
+
+/* Optional styling for clarity */
+header, footer {
+  padding: 20px;
+  text-align: center;
+  background-color: #222;
+  color: #fff;
+}
+
+/* Tweet cards */
+.tweet {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  background: #fff;
+  border: 1px solid #e1e8ed;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  transition: background 0.2s;
+}
+
+.tweet:hover {
+  background: #f9f9f9;
+}
+
+.tweet img {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+}
+
+.tweet-content h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.tweet-content .handle {
+  color: #657786;
+  font-weight: normal;
+  font-size: 0.85rem;
+}
+
+.tweet-content p {
+  margin: 0.5rem 0 0;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+article h2 {
+  color: #222;
+  border-bottom: 2px solid #00aced;
+  padding-bottom: 5px;
+  margin-top: 1.5rem;
+}
+
+article ul {
+  list-style-type: square;
+  padding-left: 20px;
+}
+
+.project {
+  background-color: #f0f8ff;
+  border-left: 4px solid #00aced;
+  padding: 10px 15px;
+  margin-bottom: 1rem;
+  border-radius: 5px;
+}
+
+.project h3 {
+  margin: 0;
+  color: #0077b6;
+}
+
+.project a {
+  color: #1dcaff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.project a:hover {
   text-decoration: underline;
 }
-
-/* === Responsive Adjustments === */
-body.works_on_smartphone main {
-  flex-direction: column; /* Stack article and aside on small screens */
+/* Profile photo */
+.profile-photo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto 1rem auto;
+  border: 3px solid #00aced;
 }
 
-@media (max-width: 768px) {
-  nav ul {
-    flex-direction: column;
-    align-items: center;
-  }
+/* Skill badges */
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 1rem;
+}
+
+.badge {
+  background-color: #00aced;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.badge:hover {
+  background-color: #1dcaff;
+}
+
+/* Article background */
+article {
+  flex: 2;
+  overflow-y: auto;
+  padding: 20px;
+  background: linear-gradient(180deg, #ffffff 0%, #f0f8ff 100%);
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* Project links hover */
+.project a {
+  color: #0077b6;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s, transform 0.2s;
+}
+
+.project a:hover {
+  color: #1dcaff;
+  transform: translateX(3px);
 }
