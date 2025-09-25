@@ -7,13 +7,13 @@ body {
   padding: 0;
 }
 
-/* Header */
+/* Header 
 header {
   background: linear-gradient(135deg, #222, #444);
   color: white;
   padding: 1.5rem;
   text-align: center;
-}
+}*/
 
 header h1 {
   margin: 0;
@@ -22,33 +22,53 @@ header h1 {
 }
 
 /* Navigation */
-nav ul {
+/* Navbar styling */
+.navbar {
+  background-color: #00aced;
+  padding: 10px 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.navbar ul {
   display: flex;
+  align-items: center;
   justify-content: center;
-  gap: 2rem;
-  margin-top: 1rem;
-  padding: 0;
   list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 20px;
 }
 
-nav ul li a {
-  color: #00aced;
+.navbar li {
+  display: flex;
+  align-items: center;
+}
+
+.navbar a {
   text-decoration: none;
+  color: white;
   font-weight: bold;
-  font-size: 1.1rem;
-  transition: color 0.3s;
+  transition: color 0.3s, border-bottom 0.3s;
+  padding: 5px 0;
 }
 
-nav ul li a:hover {
-  color: #1dcaff;
+.navbar a:hover {
+  color: #242627;
+  border-bottom: 2px solid #fff;
+}
+
+.navbar .active {
+  border-bottom: 2px solid #fff;
 }
 
 /* Logo */
-nav ul li.logo {
-  font-size: 1.8rem;
-  margin-right: auto; /* pushes links to the right */
-  color: #ffcc00;
+.navbar .logo {
+  font-size: 1.5rem;
+  margin-right: 30px;
+  color: white;
+  justify-content: flex-start;
 }
+
 
 /* Main content layout (Flex rules are already there) */
 /* Positioning with Flexbox */
@@ -88,7 +108,7 @@ aside {
 header, footer {
   padding: 20px;
   text-align: center;
-  background-color: #222;
+  background-color: #00aced;
   color: #fff;
 }
 
