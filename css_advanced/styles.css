@@ -1,88 +1,243 @@
-section {
+/* ---- Hero section */
+
+/* Navbar styles */
+.navbar {
+  width: 100%;
+  position: absolute;
+  top: 0;
+
+  display: flex;
+  justify-content: space-between; /* center whole navbar content */
+  align-items: center;
+  padding: 20px 20px; /* smaller padding */
+  gap: 20px; /* space between logo and links */
+  z-index: 10;
+}
+
+.logo {
+  display: flex;
+  align-items: left;
+  gap: 6px; 
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.logo .smiley {
+  font-size: 1.4rem;
+  padding-left: 50%;
+}
+
+.nav-links {
+  display: flex;
+  gap: 25px; /* reduce spacing between links */
+  justify-content: center;/* center whole navbar content */
+  align-items: center;
+  padding-right: 15%;
+}
+
+.nav-links a {
+  color: #fff;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s;
+  font-size: 0.9rem;
+}
+
+.nav-links a:hover {
+  color: #ff4bd1;
+}
+
+
+.hero {
+  --hero-img: url('../css_advanced/images/Object.png'); 
   position: relative;
+  min-height: 700px;               
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 20px 120px;       
+  color: #fff;
   text-align: center;
-  color: white;
-  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-              url('./images/hero-bg.jpg') no-repeat center/cover;
-  padding: 100px 20px 60px;
+  background:
+    
+    linear-gradient(180deg, rgba(220, 220, 220, 0.05) 0%, rgba(200, 200, 200, 0.08) 20%),
+    var(--hero-img) center/cover no-repeat;
+  background-attachment: fixed;
+  overflow: hidden;
 }
 
-/* Hero content */
-section > div:first-child h1 {
-  font-size: 4rem;
-  font-weight: 700;
-  margin-bottom: 20px;
+/* subtle vignette/overlay for better contrast (pseudo-element) */
+.hero::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  pointer-events: none;
+  mix-blend-mode: multiply;
 }
 
-section > div:first-child span {
-  margin: 0 10px;
-  font-size: 1rem;
-  font-weight: 600;
-  letter-spacing: 2px;
-  color: #ddd;
+/* CTA block (top) */
+.hero-cta {
+  z-index: 2;
+  max-width: 1100px;
+  width: 100%;
+  margin-bottom: 10px;
 }
 
-section > div:first-child button {
-  display: inline-block;
-  margin-top: 25px;
-  padding: 12px 30px;
-  background: linear-gradient(90deg, #d43fef, #8b5cf6);
-  border: none;
-  border-radius: 30px;
-  color: white;
-  font-weight: 600;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background 0.3s;
+/* headline */
+.hero-cta h1 {
+  font-family: "Segoe UI Black", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 800;
+  margin: 0;
+  color: #fff;
+  line-height: 0.9;
+  letter-spacing: -2px;
+  font-size: clamp(48px, 9vw, 110px); /* responsive huge headline */
+  text-transform: none;
+  text-shadow: 0 6px 24px rgba(2,8,20,0.6);
 }
 
-section > div:first-child button:hover {
-  background: linear-gradient(90deg, #8b5cf6, #d43fef);
-}
-
-/* Learn from pros */
-section > div:nth-child(2) {
-  margin-top: 80px;
-}
-
-section > div:nth-child(2) h2 {
-  font-size: 1.6rem;
-  font-weight: 600;
-  margin-bottom: 40px;
-}
-
-section > div:nth-child(2) h2 span {
-  color: #a855f7;
-}
-
-section > div:nth-child(2) > div {
+/* the small uppercase keywords under the title */
+.hero-cta .keywords {
+  margin-top: 18px;
   display: flex;
   justify-content: center;
-  gap: 50px;
+  gap: 28px;
+  align-items: center;
+}
+
+.hero-cta .keywords span {
+  display: inline-block;
+  font-size: 13px;
+  letter-spacing: 4px;
+  color: rgba(255,255,255,0.85);
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 6px 8px;
+}
+
+/* purple gradient CTA button */
+.hero-cta .cta {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 14px 28px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  color: #fff;
+  font-size: 14px;
+  background: linear-gradient(90deg,#d067f6 0%, #8b60ff 100%);
+  box-shadow: 0 12px 30px rgba(107,50,187,0.35), 0 4px 8px rgba(0,0,0,0.35);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.hero-cta .cta:hover { transform: translateY(-3px); box-shadow: 0 20px 40px rgba(107,50,187,0.45); }
+
+/* 'Learn from the pros' block */
+.hero-pros {
+  z-index: 2;
+  width: 100%;
+  margin-top: 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* accent for first word if using <span class="accent">Learn</span> */
+.hero-pros h2{
+  margin: 0;
+  color: rgba(255,255,255,0.9);
+  font-size: clamp(18px, 2.6vw, 28px);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin-bottom: 36px;
+}
+.hero-pros h2 .accent {
+  color: #bf7aff; /* purple accent */
+  font-weight: 800;
+  margin-right: 8px;
+}
+
+/* pros list row */
+.pros-list{
+  display: flex;
+  gap: 48px;
+  justify-content: center;
+  align-items: flex-end;
   flex-wrap: wrap;
+  max-width: 1200px;
+  padding: 0 20px;
+  margin-top: 8px;
 }
 
-section > div:nth-child(2) > div > div {
-  text-align: center;
-  max-width: 180px;
+/* each profile card */
+.pro {
+  width: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: translateY(30px); /* lift them to overlap hero bottom */
 }
 
-section > div:nth-child(2) img {
-  width: 120px;
-  height: 120px;
+/* circular avatar with thick white ring & soft outer shadow */
+.pro img{
+  width: 140px;
+  height: 140px;
   object-fit: cover;
   border-radius: 50%;
-  border: 4px solid white;
-  margin-bottom: 15px;
+  border: 8px solid rgba(255,255,255,0.95);
+  box-shadow: 0 18px 40px rgba(4,8,20,0.6);
+  background-clip: padding-box;
+  display: block;
+  margin-bottom: 14px;
 }
 
-section > div:nth-child(2) h3 {
-  font-size: 1rem;
+/* name and subtitle */
+.pro h3{
+  margin: 0;
+  font-size: 16px;
+  color: #fff;
   font-weight: 700;
-  margin-bottom: 5px;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.45);
+}
+.pro p{
+  margin: 6px 0 0;
+  font-size: 13px;
+  color: rgba(255,255,255,0.75);
+  font-style: italic;
+  line-height: 1.1;
+  text-align: center;
 }
 
-section > div:nth-child(2) p {
-  font-size: 0.85rem;
-  color: #ddd;
+/* dark bottom fade to match screenshot */
+.hero::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -5%;
+  height: 40%;
+  /*background: linear-gradient(180deg, rgba(2,8,20,0) 0%, rgba(2,8,20,0.85) 60%, rgba(2,8,20,1) 100%);*/
+  pointer-events: none;
+}
+
+/* responsiveness */
+@media (max-width: 980px){
+  .hero-cta h1 { font-size: clamp(36px, 10vw, 72px); }
+  .pros-list { gap: 28px; }
+  .pro { width: 150px; transform: translateY(18px); }
+  .pro img { width: 110px; height: 110px; border-width: 6px; }
+}
+
+@media (max-width: 640px){
+  .hero { padding: 60px 16px 90px; min-height: 520px; background-attachment: scroll; }
+  .hero-cta h1 { font-size: clamp(28px, 10vw, 48px); letter-spacing: -1px; }
+  .hero-cta .keywords { gap: 14px; margin-top: 14px; }
+  .hero-cta .cta { padding: 10px 20px; font-size: 13px; margin-top: 18px; }
+  .pros-list { gap: 18px; justify-content: center; }
+  .pro { width: 46%; margin: 0 2%; transform: translateY(8px); }
+  .pro img { width: 100px; height: 100px; }
+  .hero::after { height: 36%; bottom: -10%; }
 }
